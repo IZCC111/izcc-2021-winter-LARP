@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>LARP線索搜查</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <input type="text" name="search" id="search">
+            <button onclick="run()">查證</button>
+        <h2 id="clue"></h2>
+        <p id="ans"></p>
+    </body>
+    <script>
+        const clue = <%-JSON.stringify(clue)%>;
+        const answer = <%-JSON.stringify(answer)%>;
+        const x = document.getElementById('clue');
+        const y = document.getElementById('ans');
+        const input = document.getElementById('search');
+        function run(){
+            x.innerHTML = "查無資料";
+            y.innerHTML = "";
+            for(let i = 0; i<clue.length;i++){
+                if(input.value == clue[i]){
+                    x.innerHTML = clue[i];
+                    y.innerHTML = answer[i];
+                    break;
+                }
+            }
+        }
+    </script>
+</html>

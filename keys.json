@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "izcc-2021-winter-larp",
+  "private_key_id": "c3186f19ed4050c0f79e66f6604fed31ba731071",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDRuOuE2nhJDvi6\nMcIeQvGc3pk2tcySTKo3Uw/ye/4xJlMKkUgugO7TtnNTBK9dNotquN6PgzJmjnAr\n+8PxbFLNmr0BQfJzXjGcFjzQ6Bjxq9eKilLm68o8kgS6Dqbe2M/zXRZxaaGVNGGc\nDP6Jjwu5Rtnq9Vqm9ZN/nmtWhME8iOajHQRPMpzs8lQxb2ZHfvngXyOOOyC1qTzb\npw+zEM5upJodMn79FyiauMZ504G0kS6IN4mE35TlBs0DxQesdGX3mwZJBKtSe6xz\nzZMN/OieapZ79UKtLD44FL6m+yVuD7SUDJvDFPTLBnzkl9gI2dGg1cWDhCc2qeOl\neaapyuzvAgMBAAECggEALCI1keoluP4pEonJF3QwAzqG1JASglEW2vikWPuF5RLz\nE7y6C2s/lxcEktpgCwYg9a78ywepchKUgXUEaYhJrpHbJ2oY2vVeDEJTvwSwxx7K\nB5IPWyAQmYmC7CKMNEY9ELIsuGYpxkvVJLFJWWpcZbuGvV6vmoYAabFNVlIulg25\no8UVBv24SzI2DTd+SUqMvQUB1YcZAa9HoR/xPGfZd661y4+CqeUHyxPLetUX6f0x\npQbBycqbQSTtqj7Ms5fSv4d6L09eZAmCCmLVGUrXX0WZNcoBJxNhfPlEatnxqnUJ\ne7t4qb7PFEl9g93t/ihfkE3QlsFuaSGJ6rcHYIjfNQKBgQDvk/COmzUMyRfJrrja\n+NgA3WwMSNXUVXHhZ1SJbUn/9hx2icwh6vaev4suO9kWXDU6TVs/eUPwCUrPY78j\nOVB8j05KdKweS3AR5fbvAkLNupVxtc7WSp1EZMJU/cClO7nVB5ipmm1PtA/n4F6+\nesZIRQwJKjZF2qfU+0W+4ZoJ2wKBgQDgGRTtPfVacPhWh1MuTjgU8j+UOLpxPCwo\njwgvhm+v+Pznlk72ODtK2EyhKwse5TdUElA0PkG8wKFUaMOd/8RITycychOsGjGu\nu6u3Uf7BDmorlqLiPBG5/i+9mzBWcWDHlHQ8T4PoHamxKM0Bda3IstjISHMMRiIr\nPvE82ednfQKBgBNAHeo3inG2jtTD11KxABpBsHbkO1pOa1IjTWWlhHauvebAd8iZ\n6qsi1PooEO99BUHkCVr2UYEuHfbAGxGnf1Ii6bWN3m6ovR6TDd5yng+N2IhEhZQu\ndqiSOBNAOISOYgY+EARAxlvLKiQFoVdI4jnYYnkyDR5bzXSNpDMMSaZVAoGAHnCJ\nvSf7Wcuaj/ZVwCZzy7SUGkgSWys3PFMhY4M5TIffon1yQFOnCiWTUxkLq6iq+Up7\nhn0mZMMtps+MMrv5J3FI+7svHON5+CgZzQ7gMc0Jct5FRcGvDrqONY0M5dEEuldZ\n6o9KdY8B68SFBDu93VMdyya8KeCk54bnMcLPgekCgYBFrtfsBcyhU4fYul5rO4iC\nj/k7e/duxy2GdCx0y+KiA7bJPT1HcZGvC8w13POcA4rmFF7euCN6g2bhZZhWvYMn\nZ3oK1q8HjSkW9J711kuKSxbMDXI5Rh4rUVWcQxGSyrKtmpYGfGZ8G31ightC77Oo\n+23aPBxcN2NSqQ7bKEcIXQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "izcc-2021-winter-larp@izcc-2021-winter-larp.iam.gserviceaccount.com",
+  "client_id": "108012038362286663332",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/izcc-2021-winter-larp%40izcc-2021-winter-larp.iam.gserviceaccount.com"
+}
