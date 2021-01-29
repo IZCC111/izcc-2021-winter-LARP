@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
         <title>LARP線索搜查</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -9,6 +10,14 @@
             <button onclick="run()">查證</button>
         <h2 id="clue"></h2>
         <p id="ans"></p>
+            <hr>
+            <h1>已搜查過之線索</h1>
+    <%for(let i=0;i<cluetf.length;i++){
+        if(cluetf[i]=="true"){%>
+            <h2 id="clue"><%=clue[i]%></h2>
+            <p id="ans"><%=answer[i]%></p>
+    <%}}%>
+
     </body>
     <script>
         const clue = <%-JSON.stringify(clue)%>;
