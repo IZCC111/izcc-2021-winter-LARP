@@ -13,6 +13,7 @@ require('events').EventEmitter.defaultMaxListeners = 0;
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.set('view engine', 'ejs');
 
 const client = new google.auth.JWT(
@@ -83,10 +84,6 @@ async function gsrun(cl) {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
         range: 'SECRET!A3:G3'
     };
-    const optstorytf = {
-        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-        range: 'SECRET!A4:G4'
-    };
 
 
     app.get('/', async function (req, res) {
@@ -106,87 +103,80 @@ async function gsrun(cl) {
             let answer = await gsapi.spreadsheets.values.get(optans);
             let tusername = await gsapi.spreadsheets.values.get(optusername);
             let tname = await gsapi.spreadsheets.values.get(optname);
-            let storytf = await gsapi.spreadsheets.values.get(optstorytf);
             let clueArray = clue.data.values;
             let ansArray = answer.data.values;
             let tuserArray = [];
             let tnameArray = [];
-            let storytfArray = [];
             for (let i = 0; i < tusername.data.values[0].length; i++) {
                 tuserArray[i] = tusername.data.values[0][i];
                 tnameArray[i] = tname.data.values[0][i];
-                storytfArray[i] = storytf.data.values[0][i];
             }
             for (let i = 0; i < tuserArray.length; i++) {
                 if (tokenusername === tuserArray[i]) {
-                    if (storytfArray[i] == "false") {
-                        res.render('story');
-                    } else {
-                        switch (i) {
-                            case 0:
-                                let cluetf0 = await gsapi.spreadsheets.values.get(optteam0);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetf0.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                            case 1:
-                                let cluetf1 = await gsapi.spreadsheets.values.get(optteam1);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetf1.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                            case 2:
-                                let cluetf2 = await gsapi.spreadsheets.values.get(optteam2);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetf2.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                            case 3:
-                                let cluetf3 = await gsapi.spreadsheets.values.get(optteam3);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetf3.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                            case 4:
-                                let cluetf4 = await gsapi.spreadsheets.values.get(optteam4);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetf4.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                            case 5:
-                                let cluetf5 = await gsapi.spreadsheets.values.get(optteam5);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetf5.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                            case 6:
-                                let cluetfa = await gsapi.spreadsheets.values.get(optteama);
-                                res.render('index', {
-                                    clue: clueArray,
-                                    answer: ansArray,
-                                    cluetf: cluetfa.data.values,
-                                    tname: tnameArray[i]
-                                });
-                                break;
-                        }
+                    switch (i) {
+                        case 0:
+                            let cluetf0 = await gsapi.spreadsheets.values.get(optteam0);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf0.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 1:
+                            let cluetf1 = await gsapi.spreadsheets.values.get(optteam1);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf1.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 2:
+                            let cluetf2 = await gsapi.spreadsheets.values.get(optteam2);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf2.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 3:
+                            let cluetf3 = await gsapi.spreadsheets.values.get(optteam3);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf3.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 4:
+                            let cluetf4 = await gsapi.spreadsheets.values.get(optteam4);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf4.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 5:
+                            let cluetf5 = await gsapi.spreadsheets.values.get(optteam5);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf5.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 6:
+                            let cluetfa = await gsapi.spreadsheets.values.get(optteama);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetfa.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
                     }
                 }
             }
@@ -214,7 +204,7 @@ async function gsrun(cl) {
                     var token = jwt.sign({username: iusername}, SECRET, {expiresIn: '3h'});
                     console.log(token)
                     res.cookie("token", token)
-                    res.redirect(req.get('referer'));
+                    res.redirect('/story');
 
                 } else {
                     test++;
@@ -382,150 +372,7 @@ async function gsrun(cl) {
 
 
     app.post('/start', async function (req, res) {
-        let cookietoken = req.cookies.token;
-        if (cookietoken) {
-            jwt.verify(cookietoken, SECRET, function (err) {
-                if (err) {
-                    console.log("token錯誤");
-                    res.clearCookie('token');
-                    res.redirect('/');
-                    //token過期判斷
-                }
-            });
-            var detoken = jwt.verify(cookietoken, SECRET);
-            tokenusername = detoken.username;
-            console.log(tokenusername);
-            let tusername = await gsapi.spreadsheets.values.get(optusername);
-            let tname = await gsapi.spreadsheets.values.get(optname);
-            let clue = await gsapi.spreadsheets.values.get(optclue);
-            let answer = await gsapi.spreadsheets.values.get(optans);
-            let clueArray = clue.data.values;
-            let ansArray = answer.data.values;
-            let tnameArray = [];
-            let tusernameArray = [];
-            for (let i = 0; i < tusername.data.values[0].length; i++) {
-                tusernameArray[i] = tusername.data.values[0][i];
-                tnameArray[i] = tname.data.values[0][i];
-            }
-            for (let i = 0; i < tusername.data.values[0].length; i++) {
-                if (tokenusername === tusernameArray[i]) {
-                    switch (i) {
-                        case 0:
-                            const upstorytf0 = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!A4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytf0);
-                            let cluetf0 = await gsapi.spreadsheets.values.get(optteam0);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetf0.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                        case 1:
-                            const upstorytf1 = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!B4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytf1);
-                            let cluetf1 = await gsapi.spreadsheets.values.get(optteam1);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetf1.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                        case 2:
-                            const upstorytf2 = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!C4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytf2);
-                            let cluetf2 = await gsapi.spreadsheets.values.get(optteam2);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetf2.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                        case 3:
-                            const upstorytf3 = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!D4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytf3);
-                            let cluetf3 = await gsapi.spreadsheets.values.get(optteam3);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetf3.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                        case 4:
-                            const upstorytf4 = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!E4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytf4);
-                            let cluetf4 = await gsapi.spreadsheets.values.get(optteam4);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetf4.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                        case 5:
-                            const upstorytf5 = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!F4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytf5);
-                            let cluetf5 = await gsapi.spreadsheets.values.get(optteam5);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetf5.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                        case 6:
-                            const upstorytfa = {
-                                spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-                                range: 'SECRET!G4',
-                                valueInputOption: 'USER_ENTERED',
-                                resource: {"values": [["true"]]}
-                            }
-                            await gsapi.spreadsheets.values.update(upstorytfa);
-                            let cluetfa = await gsapi.spreadsheets.values.get(optteama);
-                            res.render('index', {
-                                clue: clueArray,
-                                answer: ansArray,
-                                cluetf: cluetfa.data.values,
-                                tname: tnameArray[i]
-                            });
-                            break;
-                    }
-                }
-            }
-        }
+        res.redirect('/');
     });
 
     app.get('/sus', async function (req, res) {

@@ -12,7 +12,7 @@
     <button type="button" onclick="logout()">登出</button>
 </h1>
 <br>
-<button><a href="/sus" style="color: black;text-decoration: none">查看嫌疑犯</a></button>
+<button onclick="sus()">嫌疑犯</button>
 <hr>
 <label>請輸入調查之物件/人物名稱</label>
 <br>
@@ -68,7 +68,9 @@ if(cluetf[i] == "true"){ %>
                 console.log('text status ' + textStatus + ', err ' + err)
             }
         })
-        location.reload();
+    }
+    function sus() {
+        location.href = '/sus';
     }
 </script>
 </html>

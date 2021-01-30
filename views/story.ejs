@@ -36,20 +36,8 @@
     }
 
     typing();
-    async function start() {
-        await $.ajax({
-            url: '/start',
-            type: 'POST',
-            cache: false,
-            data: false,
-            success: function (data) {
-                console.log('Success!')
-            },
-            error: function (jqXHR, textStatus, err) {
-                console.log('text status ' + textStatus + ', err ' + err)
-            }
-        })
-        location.reload();
+    function start() {
+        location.href = '/';
     }
 </script>
 </body>
