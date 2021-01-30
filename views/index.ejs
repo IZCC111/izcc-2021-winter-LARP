@@ -46,7 +46,8 @@ if(cluetf[i] == "true"){ %>
                     cache: false,
                     data: {i: i},
                     success: function (data) {
-                        console.log('Success!')
+                        console.log('Success!');
+                        location.reload();
                     },
                     error: function (jqXHR, textStatus, err) {
                         console.log('text status ' + textStatus + ', err ' + err)

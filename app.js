@@ -252,32 +252,31 @@ async function gsrun(cl) {
                     switch (i) {
                         case 0:
                             let cluetf0 = await gsapi.spreadsheets.values.get(optteam0);
-                            verifytf(cluei, i, cluetf0.data.values);
+                            verifytf(cluei, i, cluetf0.data.values, req, res);
                             break;
                         case 1:
                             let cluetf1 = await gsapi.spreadsheets.values.get(optteam1);
-                            verifytf(cluei, i, cluetf1.data.values);
+                            verifytf(cluei, i, cluetf1.data.values, req, res);
                             break;
                         case 2:
                             let cluetf2 = await gsapi.spreadsheets.values.get(optteam2);
-                            verifytf(cluei, i, cluetf2.data.values);
+                            verifytf(cluei, i, cluetf2.data.values, req, res);
                             break;
                         case 3:
                             let cluetf3 = await gsapi.spreadsheets.values.get(optteam3);
-                            verifytf(cluei, i, cluetf3.data.values);
+                            verifytf(cluei, i, cluetf3.data.values, req, res);
                             break;
                         case 4:
                             let cluetf4 = await gsapi.spreadsheets.values.get(optteam4);
-                            verifytf(cluei, i, cluetf4.data.values);
+                            verifytf(cluei, i, cluetf4.data.values, req, res);
                             break;
                         case 5:
                             let cluetf5 = await gsapi.spreadsheets.values.get(optteam5);
-                            verifytf(cluei, i, cluetf5.data.values);
+                            verifytf(cluei, i, cluetf5.data.values, req, res);
                             break;
                         case 6:
                             let cluetfa = await gsapi.spreadsheets.values.get(optteama);
-                            verifytf(cluei, i, cluetfa.data.values);
-                            console.log(tatf1.data.values);
+                            verifytf(cluei, i, cluetfa.data.values, req, res);
                             break;
                     }
                 }
@@ -287,14 +286,14 @@ async function gsrun(cl) {
     });
 
 
-    async function verifytf(cluei, teamc, ctf) {
+    async function verifytf(cluei, teamc, ctf, req, res) {
         let tname = await gsapi.spreadsheets.values.get(optname);
         let tnameArray = [];
         for (let i = 0; i < tname.data.values[0].length; i++) {
             tnameArray.push(tname.data.values[0][i]);
         }
         if (ctf[cluei][0] === "true") {
-            res.redirect('/')
+            res.send();
         } else {
             ctf[cluei][0] = "true";
             console.log(ctf);
