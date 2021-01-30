@@ -50,8 +50,8 @@ if(cluetf[i] == "true"){ %>
         }
     }
 
-    function logout() {
-        $.ajax({
+    async function logout() {
+        await $.ajax({
             url: '/logout',
             type: 'POST',
             cache: false,
