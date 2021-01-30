@@ -7,7 +7,7 @@ const bodyparser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const app = express();
-const SECRET = 'IZCC2021winterjizz';
+const SECRET = 'IZCC2021nowinterjizz';
 
 require('events').EventEmitter.defaultMaxListeners = 0;
 app.use(bodyparser.urlencoded({extended: false}));
@@ -59,21 +59,29 @@ async function gsrun(cl) {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
         range: 'team!E2:E99'
     };
-    const optteama = {
+    const optteam4 = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
         range: 'team!F2:F99'
     };
+    const optteam5 = {
+        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
+        range: 'team!G2:G99'
+    };
+    const optteama = {
+        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
+        range: 'team!H2:H99'
+    };
     const optname = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-        range: 'SECRET!A1:E1'
+        range: 'SECRET!A1:G1'
     };
     const optusername = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-        range: 'SECRET!A2:E2'
+        range: 'SECRET!A2:G2'
     };
     const optpassword = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-        range: 'SECRET!A3:E3'
+        range: 'SECRET!A3:G3'
     };
 
 
@@ -142,6 +150,24 @@ async function gsrun(cl) {
                             });
                             break;
                         case 4:
+                            let cluetf4 = await gsapi.spreadsheets.values.get(optteam4);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf4.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 5:
+                            let cluetf5 = await gsapi.spreadsheets.values.get(optteam5);
+                            res.render('index', {
+                                clue: clueArray,
+                                answer: ansArray,
+                                cluetf: cluetf5.data.values,
+                                tname: tnameArray[i]
+                            });
+                            break;
+                        case 6:
                             let cluetfa = await gsapi.spreadsheets.values.get(optteama);
                             res.render('index', {
                                 clue: clueArray,
@@ -238,6 +264,14 @@ async function gsrun(cl) {
                             verifytf(cluei, i, cluetf3.data.values);
                             break;
                         case 4:
+                            let cluetf4 = await gsapi.spreadsheets.values.get(optteam4);
+                            verifytf(cluei, i, cluetf4.data.values);
+                            break;
+                        case 5:
+                            let cluetf5 = await gsapi.spreadsheets.values.get(optteam5);
+                            verifytf(cluei, i, cluetf5.data.values);
+                            break;
+                        case 6:
                             let cluetfa = await gsapi.spreadsheets.values.get(optteama);
                             verifytf(cluei, i, cluetfa.data.values);
                             console.log(tatf1.data.values);
@@ -300,9 +334,27 @@ async function gsrun(cl) {
                     await gsapi.spreadsheets.values.update(cluetf3);
                     break;
                 case 4:
-                    const cluetfa = {
+                    const cluetf4 = {
                         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
                         range: 'team!F2',
+                        valueInputOption: 'USER_ENTERED',
+                        resource: {"values": ctf}
+                    }
+                    await gsapi.spreadsheets.values.update(cluetf4);
+                    break;
+                case 5:
+                    const cluetf5 = {
+                        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
+                        range: 'team!G2',
+                        valueInputOption: 'USER_ENTERED',
+                        resource: {"values": ctf}
+                    }
+                    await gsapi.spreadsheets.values.update(cluetf5);
+                    break;
+                case 6:
+                    const cluetfa = {
+                        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
+                        range: 'team!H2',
                         valueInputOption: 'USER_ENTERED',
                         resource: {"values": ctf}
                     }
@@ -313,4 +365,4 @@ async function gsrun(cl) {
     }
 };
 
-app.listen(30, () => console.log('Server up and running'));
+app.listen(5555, () => console.log('Server up and running'));
