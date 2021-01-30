@@ -12,12 +12,15 @@
     <button type="button" onclick="logout()">登出</button>
 </h1>
 <br>
-<button><a href="/sus">查證</a></button>
+<button><a href="/sus" style="color: black;text-decoration: none">查看嫌疑犯</a></button>
+<hr>
+<label>請輸入調查之物件/人物名稱</label>
+<br>
 <input type="text" name="search" id="search">
 <button onclick="run()">查證</button>
 <h2 id="clue"></h2>
 <hr>
-<h1>已搜查過之線索</h1>
+<h1>搜查報告</h1>
 <% for(let i = 0;i < cluetf.length;i++){
 if(cluetf[i] == "true"){ %>
     <h2><%= clue[i] %></h2>
