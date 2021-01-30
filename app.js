@@ -408,6 +408,39 @@ async function gsrun(cl) {
         }
     });
 
+    app.get('/map', async function (req, res) {
+        let cookietoken = req.cookies.token;
+        if (cookietoken) {
+            jwt.verify(cookietoken, SECRET, function (err) {
+                if (err) {
+                    console.log("token錯誤");
+                    res.clearCookie('token');
+                    res.render('login');
+                    //token過期判斷
+                }
+            });
+            var detoken = jwt.verify(cookietoken, SECRET);
+            tokenusername = detoken.username;
+            let tusername = await gsapi.spreadsheets.values.get(optusername);
+            let tname = await gsapi.spreadsheets.values.get(optname);
+            let tuserArray = [];
+            let tnameArray = [];
+            for (let i = 0; i < tusername.data.values[0].length; i++) {
+                tuserArray[i] = tusername.data.values[0][i];
+                tnameArray[i] = tname.data.values[0][i];
+            }
+            for (let i = 0; i < tuserArray.length; i++) {
+                if (tokenusername === tuserArray[i]) {
+                    res.render('map', {
+                        tname: tnameArray[i]
+                    });
+                }
+            }
+        } else {
+            res.render('login');
+        }
+    });
+
 };
 
 app.listen(5555, () => console.log('Server up and running'));
