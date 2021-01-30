@@ -8,8 +8,11 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>你的小隊:<%= tname %><button type="button" onclick="logout()">登出</button></h1>
+<h1>你的小隊:<%= tname %>
+    <button type="button" onclick="logout()">登出</button>
+</h1>
 <br>
+<button><a href="/sus">查證</a></button>
 <input type="text" name="search" id="search">
 <button onclick="run()">查證</button>
 <h2 id="clue"></h2>
@@ -17,8 +20,8 @@
 <h1>已搜查過之線索</h1>
 <% for(let i = 0;i < cluetf.length;i++){
 if(cluetf[i] == "true"){ %>
-<h2><%= clue[i] %></h2>
-<p><%= answer[i] %></p>
+    <h2><%= clue[i] %></h2>
+    <p><%= answer[i] %></p>
 <% }} %>
 
 </body>
@@ -45,7 +48,6 @@ if(cluetf[i] == "true"){ %>
                         console.log('text status ' + textStatus + ', err ' + err)
                     }
                 })
-                location.reload();
             }
         }
     }
