@@ -22,9 +22,9 @@
 <hr>
 <img id="map" src="../images/map.jpg" usemap="#map" style="width: 100%;">
 <map name="map">
-    <area alt="建仁企業" title="建仁企業" onclick="" coords="706,1525,1791,2670" shape="rect">
+    <area alt="建仁企業" title="建仁企業" onclick="JianFloor()" coords="706,1525,1791,2670" shape="rect">
     <area alt="咖啡廳" title="咖啡廳" onclick="cafe()" coords="56,1529,638,2075" shape="rect">
-    <area alt="王葉的家" title="王葉的家" onclick="" coords="2384,140,3793,960" shape="rect">
+    <area alt="王葉的家" title="王葉的家" onclick="home()" coords="2384,140,3793,960" shape="rect">
     <area alt="救護車" title="救護車" onclick="ambulance()" coords="2344,1279,2637,1431" shape="rect">
     <area alt="全國電子" title="全國電子" onclick="elec()" coords="2427,1543,3096,2151" shape="rect">
 </map>
@@ -58,6 +58,27 @@
 <map name="insurance">
     <area alt="保險" title="保險" coords="1466,1199,1246" shape="circle">
 </map>
+<img id="JianFloor" src="../images/JianFloor.jpg" usemap="#JianFloor" style="width: 100%;display: none">
+<map name="JianFloor">
+    <area alt="葉跟王的辦公室" title="葉跟王的辦公室" href="" coords="1527,0,3013,575" shape="rect">
+    <area alt="三樓廁所" title="三樓廁所" href="" coords="3024,0,3295,575" shape="rect">
+    <area alt="員工辦公室" title="員工辦公室" href="" coords="1137,593,3013,1367" shape="rect">
+    <area alt="二樓廁所" title="二樓廁所" href="" coords="3031,597,3295,1360" shape="rect">
+    <area alt="警衛室" title="警衛室" href="" coords="1140,1776,1444,2173" shape="rect">
+    <area alt="一樓廁所" title="一樓廁所" href="" coords="3027,1374,3291,2173" shape="rect">
+    <area alt="發表會場" title="發表會場" href="" coords="1137,1374,3013,1374,3017,2173,1451,2173,1451,1772,1137,1761" shape="poly">
+    <area alt="倉庫" title="倉庫" onclick="storage()" coords="1140,2191,3299,2889" shape="rect">
+    <area alt="信箱" title="信箱" href="" coords="533,1917,739,2184" shape="rect">
+</map>
+<img id="storage" src="../images/storage.JPG" usemap="#storage" style="width: 100%;display: none">
+<map name="storage">
+    <area alt="99台美好幻想世界" title="99台美好幻想世界" coords="4,1,786,597" shape="rect">
+</map>
+<img id="home" src="../images/home.jpg" usemap="#home" style="width: 100%;display: none">
+<map name="home">
+    <area alt="王葉的家" title="王葉的家" coords="2420,839,3772,2893" shape="rect">
+    <area alt="鄰居" title="鄰居" coords="497,2889,1339,2889,1365,2857,1368,2799,1368,2752,1361,2716,1361,2690,1368,2662,1368,2604,1372,2575,1379,2553,1379,2531,1379,2510,1401,2445,1412,2423,1426,2387,1426,2354,1422,2296,1325,2177,1278,2101,1263,2087,1224,2058,1184,2036,1198,1906,1155,1873,1122,1866,1097,1859,1068,1859,1039,1859,1018,1830,1000,1812,913,1826,887,1837,826,1826,786,1833,768,1852,746,1880,728,1899,707,1924,685,1935,652,1967,631,1996,609,2011,573,2018,548,2040,537,2065,555,2134,533,2144,497,2191,512,2231,569,2347,522,2347,486,2383,479,2495,479,2604,475,2658,472,2738,465,2774,465,2817,472,2871" shape="poly">
+</map>
 <button id="back" onclick="back()" style="display: none">返回</button>
 </body>
 <script>
@@ -82,6 +103,8 @@
         document.getElementById('elec').style.display = 'none';
         document.getElementById('ambulance').style.display = 'none';
         document.getElementById('cafe').style.display = 'none';
+        document.getElementById('JianFloor').style.display = 'none';
+        document.getElementById('home').style.display = 'none';
         document.getElementById('map').style.display = 'block';
         document.getElementById('back').style.display = 'none';
         now = "map";
@@ -129,6 +152,27 @@
         now = "insurance";
     }
 
+    function JianFloor(){
+        document.getElementById('map').style.display = 'none';
+        document.getElementById('storage').style.display = 'none';
+        document.getElementById('JianFloor').style.display = 'block';
+        document.getElementById('back').style.display = 'block';
+        now = "JianFloor";
+    }
+
+    function storage(){
+        document.getElementById('JianFloor').style.display = 'none';
+        document.getElementById('storage').style.display = 'block';
+        now = "storage";
+    }
+
+    function home(){
+        document.getElementById('map').style.display = 'none';
+        document.getElementById('home').style.display = 'block';
+        document.getElementById('back').style.display = 'block';
+        now = "home";
+    }
+
     function back(){
         switch (now){
             case "elec":
@@ -148,6 +192,15 @@
                 break;
             case "insurance":
                 cafe();
+                break;
+            case "JianFloor":
+                map();
+                break;
+            case "storage":
+                JianFloor();
+                break;
+            case "home":
+                map();
                 break;
         }
     }
