@@ -44,6 +44,14 @@ async function gsrun(cl) {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
         range: 'data!B2:B99'
     };
+    const opthint = {
+        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
+        range: 'hint!C2:C99'
+    };
+    const opthintid = {
+        spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
+        range: 'hint!A2:A99'
+    };
     const optteam0 = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
         range: 'team!B1:B99'
@@ -422,6 +430,10 @@ async function gsrun(cl) {
             tokenusername = detoken.username;
             let tusername = await gsapi.spreadsheets.values.get(optusername);
             let tname = await gsapi.spreadsheets.values.get(optname);
+            let hintid = await gsapi.spreadsheets.values.get(opthintid);
+            let hint = await gsapi.spreadsheets.values.get(opthint);
+            let hintidArray = hintid.data.values[0];
+            let hintArray = hint.data.values[0];
             let tuserArray = [];
             let tnameArray = [];
             for (let i = 0; i < tusername.data.values[0].length; i++) {
@@ -431,7 +443,9 @@ async function gsrun(cl) {
             for (let i = 0; i < tuserArray.length; i++) {
                 if (tokenusername === tuserArray[i]) {
                     res.render('map', {
-                        tname: tnameArray[i]
+                        tname: tnameArray[i],
+                        hintid: hintidArray,
+                        hint: hintArray
                     });
                 }
             }
