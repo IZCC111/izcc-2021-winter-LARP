@@ -432,8 +432,8 @@ async function gsrun(cl) {
             let tname = await gsapi.spreadsheets.values.get(optname);
             let hintid = await gsapi.spreadsheets.values.get(opthintid);
             let hint = await gsapi.spreadsheets.values.get(opthint);
-            let hintidArray = hintid.data.values[0];
-            let hintArray = hint.data.values[0];
+            let hintidArray = hintid.data.values;
+            let hintArray = hint.data.values;
             let tuserArray = [];
             let tnameArray = [];
             for (let i = 0; i < tusername.data.values[0].length; i++) {
