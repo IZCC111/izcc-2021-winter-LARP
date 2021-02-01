@@ -46,7 +46,7 @@ async function gsrun(cl) {
     };
     const opthint = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
-        range: 'hint!C2:C99'
+        range: 'hint!D2:D99'
     };
     const opthintid = {
         spreadsheetId: '1R_vFc0ZIhAHydCOBoXIpBDDS1XZbBCevfyJHB6cUw5E',
