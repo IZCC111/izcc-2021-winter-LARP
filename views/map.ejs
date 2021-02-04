@@ -49,7 +49,9 @@
 <img id="tv" src="../images/tv.jpg" usemap="#tv" style="width: 100%;display: none">
 <map name="tv">
     <area target="" alt="新聞" title="新聞" data-toggle="modal" data-target="#news" coords="-2,295,4090,2129" shape="rect">
-    <area target="" alt="小精靈" title="小精靈" data-toggle="modal" data-target="#pacman" coords="659,2380,634,2406,620,2431,620,2456,623,2481,663,2485,710,2478,735,2478,742,2449,739,2420,739,2395,710,2373,677,2369" shape="poly">
+    <area target="" alt="小精靈" title="小精靈" data-toggle="modal" data-target="#pacman"
+          coords="659,2380,634,2406,620,2431,620,2456,623,2481,663,2485,710,2478,735,2478,742,2449,739,2420,739,2395,710,2373,677,2369"
+          shape="poly">
 </map>
 <img id="ambulance" src="../images/ambulance.jpg" usemap="#ambulance" style="width: 100%;display: none">
 <map name="ambulance">
@@ -81,12 +83,13 @@
 <img id="JianFloor" src="../images/JianFloor.jpg" usemap="#JianFloor" style="width: 100%;display: none">
 <map name="JianFloor">
     <area alt="葉跟王的辦公室" title="葉跟王的辦公室" onclick="bossoffice()" coords="1527,0,3013,575" shape="rect">
-    <area alt="三樓廁所" title="三樓廁所" coords="3024,0,3295,575" shape="rect">
+    <area alt="三樓廁所" title="三樓廁所" onclick="wc13()" coords="3024,0,3295,575" shape="rect">
     <area alt="員工辦公室" title="員工辦公室" onclick="office()" coords="1137,593,3013,1367" shape="rect">
-    <area alt="二樓廁所" title="二樓廁所" coords="3031,597,3295,1360" shape="rect">
+    <area alt="二樓廁所" title="二樓廁所" onclick="wc2()" coords="3031,597,3295,1360" shape="rect">
     <area alt="警衛室" title="警衛室" onclick="security()" coords="1140,1776,1444,2173" shape="rect">
-    <area alt="一樓廁所" title="一樓廁所" coords="3027,1374,3291,2173" shape="rect">
-    <area alt="發表會場" title="發表會場" coords="1137,1374,3013,1374,3017,2173,1451,2173,1451,1772,1137,1761" shape="poly">
+    <area alt="一樓廁所" title="一樓廁所" onclick="wc13()" coords="3027,1374,3291,2173" shape="rect">
+    <area alt="發表會場" title="發表會場" onclick="presentation()"
+          coords="1137,1374,3013,1374,3017,2173,1451,2173,1451,1772,1137,1761" shape="poly">
     <area alt="倉庫" title="倉庫" onclick="storage()" coords="1140,2191,3299,2889" shape="rect">
     <area alt="信箱" title="信箱" onclick="mailbox()" coords="533,1917,739,2184" shape="rect">
 </map>
@@ -103,11 +106,7 @@
 </map>
 <img id="security" src="../images/security.jpg" usemap="#security" style="width: 100%;display: none">
 <map name="security">
-    <area alt="監視器" title="監視器" onclick="cctv()" coords="2341,879,3855,1942" shape="rect">
-</map>
-<img id="cctv" src="../images/cctv.jpg" usemap="#cctv" style="width: 100%;display: none">
-<map name="cctv">
-    <area target="" alt="倉庫的人影" title="倉庫的人影" data-toggle="modal" data-target="#shadow" coords="1415,67,2597,975" shape="rect">
+    <area alt="監視器" title="監視器" onclick="cctv3()" coords="2341,879,3855,1942" shape="rect">
 </map>
 <img id="mailbox" src="../images/mailbox.jpg" usemap="#mailbox" style="width: 100%;display: none">
 <map name="mailbox">
@@ -123,7 +122,17 @@
 <img id="bossoffice" src="../images/bossoffice.jpg" usemap="#bossoffice" style="width: 100%;display: none">
 <map name="bossoffice">
 </map>
+<img id="presentation" src="../images/presentation.jpg" usemap="#presentation" style="width: 100%;display: none">
+<map name="presentation">
+</map>
+<img id="wc13" src="../images/wc13.jpg" usemap="#wc13" style="width: 100%;display: none">
+<map name="wc13">
+</map>
+<img id="wc2" src="../images/wc2.jpg" usemap="#wc2" style="width: 100%;display: none">
+<map name="wc2">
+</map>
 <button id="back" onclick="back()" style="display: none">返回</button>
+<%- include('./cctv.ejs') %>
 <div id="map-model">
 
 </div>
@@ -209,6 +218,9 @@
         document.getElementById('mailbox').style.display = 'none';
         document.getElementById('office').style.display = 'none';
         document.getElementById('bossoffice').style.display = 'none';
+        document.getElementById('presentation').style.display = 'none';
+        document.getElementById('wc13').style.display = 'none';
+        document.getElementById('wc2').style.display = 'none';
         document.getElementById('JianFloor').style.display = 'block';
         document.getElementById('back').style.display = 'block';
         now = "JianFloor";
@@ -229,14 +241,11 @@
 
     function security() {
         document.getElementById('JianFloor').style.display = 'none';
-        document.getElementById('cctv').style.display = 'none';
+        document.getElementById('cctv3').style.display = 'none';
+        document.getElementById('cctv2').style.display = 'none';
+        document.getElementById('cctv1').style.display = 'none';
         document.getElementById('security').style.display = 'block';
         now = "security";
-    }
-    function cctv() {
-        document.getElementById('security').style.display = 'none';
-        document.getElementById('cctv').style.display = 'block';
-        now = "cctv";
     }
 
     function mailbox() {
@@ -262,6 +271,24 @@
         document.getElementById('JianFloor').style.display = 'none';
         document.getElementById('bossoffice').style.display = 'block';
         now = "bossoffice";
+    }
+
+    function presentation() {
+        document.getElementById('JianFloor').style.display = 'none';
+        document.getElementById('presentation').style.display = 'block';
+        now = "presentation";
+    }
+
+    function wc13() {
+        document.getElementById('JianFloor').style.display = 'none';
+        document.getElementById('wc13').style.display = 'block';
+        now = "wc13";
+    }
+
+    function wc2() {
+        document.getElementById('JianFloor').style.display = 'none';
+        document.getElementById('wc2').style.display = 'block';
+        now = "wc2";
     }
 
     function back() {
@@ -299,6 +326,15 @@
             case "cctv":
                 security();
                 break;
+            case "incctv3":
+                cctv3();
+                break;
+            case "incctv2":
+                cctv2();
+                break;
+            case "incctv1":
+                cctv1();
+                break;
             case "mailbox":
                 JianFloor();
                 break;
@@ -309,6 +345,15 @@
                 JianFloor();
                 break;
             case "bossoffice":
+                JianFloor();
+                break;
+            case "presentation":
+                JianFloor();
+                break;
+            case "wc13":
+                JianFloor();
+                break;
+            case "wc2":
                 JianFloor();
                 break;
         }
