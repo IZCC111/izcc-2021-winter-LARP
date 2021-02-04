@@ -35,7 +35,7 @@
     <area alt="會場" title="會場" onclick="presentation2()" coords="70,76,1408,966" shape="rect">
     <area alt="倉庫" title="倉庫" onclick="storage2()" coords="1422,80,2597,976" shape="rect">
     <area alt="咖啡廳" title="咖啡廳" onclick="cafe2()" coords="2604,76,4007,976" shape="rect">
-    <area alt="一樓廁所" title="一樓廁所" onclick="wc2()" coords="67,973,1408,1790" shape="rect">
+    <area alt="一樓廁所" title="一樓廁所" onclick="wcctv2()" coords="67,973,1408,1790" shape="rect">
     <area alt="員工辦公室" title="員工辦公室" onclick="office2()" coords="1422,980,2608,1797" shape="rect">
     <area alt="二樓廁所" title="二樓廁所" onclick="wcc2()" coords="2608,983,4000,1812" shape="rect">
     <area alt="無信號1" title="無信號1" coords="70,1801,1415,2705" shape="rect">
@@ -53,8 +53,8 @@
 <img id="cafe2" src="../images/cafe.jpg" usemap="cafe2" style="width: 100%;display: none">
 <map name="cafe2">
 </map>
-<img id="wc2" src="../images/wcyo.jpg" usemap="wc2" style="width: 100%;display: none">
-<map name="wc2">
+<img id="wcctv2" src="../images/wcyo.jpg" usemap="wcctv2" style="width: 100%;display: none">
+<map name="wcctv2">
 </map>
 <img id="office2" src="../images/office.jpg" usemap="office2" style="width: 100%;display: none">
 <map name="office2">
@@ -148,7 +148,7 @@
         document.getElementById('presentation2').style.display = 'none';
         document.getElementById('storage2').style.display = 'none';
         document.getElementById('cafe2').style.display = 'none';
-        document.getElementById('wc2').style.display = 'none';
+        document.getElementById('wcctv22').style.display = 'none';
         document.getElementById('office2').style.display = 'none';
         document.getElementById('wcc2').style.display = 'none';
         document.getElementById('cctv2').style.display = 'block';
@@ -173,9 +173,9 @@
         now = "incctv2"
     }
 
-    function wc2() {
+    function wcctv2() {
         document.getElementById('cctv2').style.display = 'none';
-        document.getElementById('wc2').style.display = 'block';
+        document.getElementById('wcctv22').style.display = 'block';
         now = "incctv2"
     }
 
