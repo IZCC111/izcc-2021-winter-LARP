@@ -249,7 +249,7 @@ async function gsrun(cl) {
             });
             var detoken = jwt.verify(cookietoken, SECRET);
             tokenusername = detoken.username;
-            console.log(tokenusername + "找到了線索" + clueArray[cluei])
+            console.log(tokenusername + "找到了線索「" + clueArray[cluei] + "」");
             let tusername = await gsapi.spreadsheets.values.get(optusername);
             let tusernameArray = [];
             for (let i = 0; i < tusername.data.values[0].length; i++) {
