@@ -210,10 +210,9 @@ async function gsrun(cl) {
             if (iusername === usernameArray[i]) {
                 if (ipassword === passwordArray[i]) {
                     var token = jwt.sign({username: iusername}, SECRET, {expiresIn: '3h'});
-                    console.log(token)
                     res.cookie("token", token)
                     res.redirect('/story');
-
+                    console.log(iusername + "已登入");
                 } else {
                     test++;
                     if (test === username.data.values[0].length) {
@@ -235,8 +234,9 @@ async function gsrun(cl) {
     });
 
     app.post('/foundclue', async function (req, res) {
-        console.log(req.body.i);
         let cluei = parseInt(req.body.i);
+        let clue = await gsapi.spreadsheets.values.get(optclue);
+        let clueArray = clue.data.values;
         let cookietoken = req.cookies.token;
         if (cookietoken) {
             jwt.verify(cookietoken, SECRET, function (err) {
@@ -249,7 +249,7 @@ async function gsrun(cl) {
             });
             var detoken = jwt.verify(cookietoken, SECRET);
             tokenusername = detoken.username;
-            console.log(tokenusername);
+            console.log(tokenusername + "找到了線索" + clueArray[cluei])
             let tusername = await gsapi.spreadsheets.values.get(optusername);
             let tusernameArray = [];
             for (let i = 0; i < tusername.data.values[0].length; i++) {
@@ -304,7 +304,6 @@ async function gsrun(cl) {
             res.send();
         } else {
             ctf[cluei][0] = "true";
-            console.log(ctf);
             switch (teamc) {
                 case 0:
                     const cluetf0 = {
